@@ -10,15 +10,11 @@ import SwiftUI
 
 
 class AudioPlayerViewModel: ObservableObject {
-    //    let audioURLString: String
     @Published var isPlaying = false
     @Published var currentTime = TimeInterval(0)
     private var audioPlayer: AVAudioPlayer?
     var duration = TimeInterval(0)
-    @Published var playbackRate: Float = 1.0  // Add a property for playback rate
-    //    init(audioURLString: String) {
-    //        self.audioURLString = audioURLString
-    //    }
+    @Published var playbackRate: Float = 1.0 
     
     func setupAudio(with urlString: String) {
         var tempURLString: String = urlString
@@ -78,7 +74,6 @@ class AudioPlayerViewModel: ObservableObject {
             if let audioPlayer = self.audioPlayer, audioPlayer.isPlaying {
                 let currentTimeMillis = audioPlayer.currentTime * 1000
                 self.currentTime = audioPlayer.currentTime
-                //                updateCurrentUtteranceIndex(currentTimeMillis)
             } else {
                 timer.invalidate()
             }

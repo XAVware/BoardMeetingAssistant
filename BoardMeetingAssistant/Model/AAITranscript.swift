@@ -7,28 +7,6 @@
 
 import Foundation
 
-enum MagicValue: Codable {
-    case int(Int), string(String)
-    
-    init(from decoder: Decoder) throws {
-        if let int = try? decoder.singleValueContainer().decode(Int.self) {
-            self = .int(int)
-            return
-        }
-        
-        if let string = try? decoder.singleValueContainer().decode(String.self) {
-            self = .string(string)
-            return
-        }
-        
-        throw MagicError.missingValue
-    }
-    
-    enum MagicError: Error {
-        case missingValue
-    }
-}
-
 struct AAITranscript: Codable {
 //    let language_code: String?
     var audio_url: String?

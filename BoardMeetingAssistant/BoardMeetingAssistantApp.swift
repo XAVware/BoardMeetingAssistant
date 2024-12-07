@@ -19,7 +19,6 @@ struct BoardMeetingAssistantApp: App {
                 .modelContainer(for: Project.self)
                 .modelContainer(for: Transcript.self)
                 .preferredColorScheme(.light)
-                
         }
         .defaultSize(width: 1800, height: 1080)
         .defaultPosition(UnitPoint(x: 0, y: 0))

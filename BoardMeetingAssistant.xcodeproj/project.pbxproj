@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		943EC55B2D02BF1000CA53FD /* priv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943EC55A2D02BF0E00CA53FD /* priv.swift */; };
 		943EC55D2D02BF4800CA53FD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 943EC55C2D02BF4800CA53FD /* .gitignore */; };
 		944B1A2A2CB226A900197ADB /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944B1A292CB226A300197ADB /* NavigationContext.swift */; };
+		9454B36F2D02D08B0001B718 /* priv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454B36E2D02D08B0001B718 /* priv.swift */; };
+		9454B3712D02D1190001B718 /* CropFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454B3702D02D1090001B718 /* CropFileView.swift */; };
+		946376C82D04160700A29D9D /* createDocument.py in Resources */ = {isa = PBXBuildFile; fileRef = 946376C62D04160700A29D9D /* createDocument.py */; };
+		946376C92D04160700A29D9D /* transcribe.py in Resources */ = {isa = PBXBuildFile; fileRef = 946376C72D04160700A29D9D /* transcribe.py */; };
 		94828BFD2CAF9AD000E5E5A0 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94828BFC2CAF9AC500E5E5A0 /* ProjectListView.swift */; };
 		94828C052CB1EDBC00E5E5A0 /* Preview+ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94828C032CB1EDBC00E5E5A0 /* Preview+ModelContainer.swift */; };
 		94828C062CB1EDBC00E5E5A0 /* ModelContainerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94828C022CB1EDBC00E5E5A0 /* ModelContainerPreview.swift */; };
@@ -29,9 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		943EC55A2D02BF0E00CA53FD /* priv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = priv.swift; sourceTree = "<group>"; };
 		943EC55C2D02BF4800CA53FD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		944B1A292CB226A300197ADB /* NavigationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
+		9454B36E2D02D08B0001B718 /* priv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = priv.swift; sourceTree = "<group>"; };
+		9454B3702D02D1090001B718 /* CropFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropFileView.swift; sourceTree = "<group>"; };
+		946376C62D04160700A29D9D /* createDocument.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = createDocument.py; sourceTree = "<group>"; };
+		946376C72D04160700A29D9D /* transcribe.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = transcribe.py; sourceTree = "<group>"; };
 		94828BFC2CAF9AC500E5E5A0 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
 		94828C022CB1EDBC00E5E5A0 /* ModelContainerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainerPreview.swift; sourceTree = "<group>"; };
 		94828C032CB1EDBC00E5E5A0 /* Preview+ModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+ModelContainer.swift"; sourceTree = "<group>"; };
@@ -77,6 +83,8 @@
 		949BE1322C8D7526004E237A = {
 			isa = PBXGroup;
 			children = (
+				946376C62D04160700A29D9D /* createDocument.py */,
+				946376C72D04160700A29D9D /* transcribe.py */,
 				943EC55C2D02BF4800CA53FD /* .gitignore */,
 				949BE13D2C8D7526004E237A /* BoardMeetingAssistant */,
 				949BE13C2C8D7526004E237A /* Products */,
@@ -94,7 +102,7 @@
 		949BE13D2C8D7526004E237A /* BoardMeetingAssistant */ = {
 			isa = PBXGroup;
 			children = (
-				943EC55A2D02BF0E00CA53FD /* priv.swift */,
+				9454B36E2D02D08B0001B718 /* priv.swift */,
 				944B1A292CB226A300197ADB /* NavigationContext.swift */,
 				949BE1442C8D7527004E237A /* Assets.xcassets */,
 				94CDCF4C2C900013007887E7 /* Info.plist */,
@@ -131,6 +139,7 @@
 		94D1AD4C2CACFC7D00CEC955 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9454B3702D02D1090001B718 /* CropFileView.swift */,
 				94828C0C2CB1FC4A00E5E5A0 /* AudioPlayerView.swift */,
 				94828BFC2CAF9AC500E5E5A0 /* ProjectListView.swift */,
 				949BE14F2C8D754B004E237A /* ProjectView.swift */,
@@ -211,6 +220,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				949BE1492C8D7527004E237A /* Preview Assets.xcassets in Resources */,
+				946376C82D04160700A29D9D /* createDocument.py in Resources */,
+				946376C92D04160700A29D9D /* transcribe.py in Resources */,
 				943EC55D2D02BF4800CA53FD /* .gitignore in Resources */,
 				94CDCF4B2C8EC4DC007887E7 /* GoogleService-Info.plist in Resources */,
 				949BE1452C8D7527004E237A /* Assets.xcassets in Resources */,
@@ -226,16 +237,17 @@
 			files = (
 				94828C0D2CB1FC5300E5E5A0 /* AudioPlayerView.swift in Sources */,
 				94CDCF502C90139E007887E7 /* AutocompleteTextField.swift in Sources */,
+				9454B36F2D02D08B0001B718 /* priv.swift in Sources */,
 				949BE1412C8D7526004E237A /* ContentView.swift in Sources */,
 				94D1AD502CAD233C00CEC955 /* OutlinedFieldMod.swift in Sources */,
 				94828C052CB1EDBC00E5E5A0 /* Preview+ModelContainer.swift in Sources */,
 				94828C062CB1EDBC00E5E5A0 /* ModelContainerPreview.swift in Sources */,
-				943EC55B2D02BF1000CA53FD /* priv.swift in Sources */,
 				94CDCF322C8D8127007887E7 /* AAITranscript.swift in Sources */,
 				94828BFD2CAF9AD000E5E5A0 /* ProjectListView.swift in Sources */,
 				949BE1432C8D7526004E237A /* Project.swift in Sources */,
 				949BE1502C8D754B004E237A /* ProjectView.swift in Sources */,
 				944B1A2A2CB226A900197ADB /* NavigationContext.swift in Sources */,
+				9454B3712D02D1190001B718 /* CropFileView.swift in Sources */,
 				94D1AD4E2CAD1B7D00CEC955 /* SetupView.swift in Sources */,
 				949BE13F2C8D7526004E237A /* BoardMeetingAssistantApp.swift in Sources */,
 				94828C0B2CB1EE8600E5E5A0 /* SampleData.swift in Sources */,
