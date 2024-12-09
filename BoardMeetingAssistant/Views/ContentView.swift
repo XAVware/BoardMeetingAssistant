@@ -18,7 +18,7 @@ struct ContentView: View {
             try modelContext.delete(model: Project.self)
             try modelContext.delete(model: Transcript.self)
         } catch {
-            print("Failed to clear all projects.")
+            print("[Error] Failed to clear all projects.")
         }
     }
     
@@ -45,10 +45,8 @@ struct ContentView: View {
                         ForEach(projects, id: \.self) { proj in
                             NavigationLink(proj.name, value: proj)
                         }
-                        //                        .onDelete(perform: deleteProjects)
                     } //: List
                     .frame(width: 280)
-                    
                 } //: VStack
                 
                 VStack(alignment: .leading, spacing: 12) {
@@ -81,11 +79,6 @@ struct ContentView: View {
             }
         }
         .environment(navigationContext)
-//        .onAppear {
-//            try? modelContext.delete(model: Project.self, where: #Predicate { project in
-//                project.name == ""
-//            })
-//        }
     } //: Body
 }
 

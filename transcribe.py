@@ -3,79 +3,92 @@ import json
 import os
 import sys
 
-# aai.settings.api_key = "b3260dded65446e6ad2edfb22e41d515"
-# month = "September"
-# ext = "MP4"
+SECTION_GROUPS = { 
+    'PROCEDURAL': {
+        'sections': ['ATTENDANCE', 'AGENDA', 'MINUTES'],
+        'markers': ['call to order', 'adoption of the agenda', 'approval of minutes', 'start with attendance'],
+        'speakers_expected': 10
+    },
+    'REPORTS': {
+        'sections': ['MANAGER', 'FINANCIAL', 'ENGINEERING'],
+        'markers': ['manager\'s report', 'financial report', 'engineering report', 'treasurer\'s report'],
+        'speakers_expected': 10
+    },
+    'BUSINESS': {
+        'sections': ['OLD_BUSINESS', 'NEW_BUSINESS', 'OTHER_BUSINESS'],
+        'markers': ['old business', 'new business', 'other business'],
+        'speakers_expected': 10
+    }
+}
 
-aai.settings.api_key = sys.argv[1]
-month = sys.argv[2]
-audioPath = sys.argv[3]
-
-rootPath = fr"/Users/ryan/Library/Containers/com.xavware.BoardMeetingAssistant/Data/Documents/{month}"
-
-try:
-    os.makedirs(rootPath)
-    # print(f"Created directory at {rootPath}")
-except FileExistsError:
-    # print("Directory already exists")
-    pass
-
-boostedWords = [
-    # Board Members
-    "Victoria Germano", "Stu Conklin", "Steve Giles", "Bob Pagano", "Pete Realmonte", "John Hadley", "Doug Vance", "John Stanley", "Bruce Young", "Anand Dash", "Sabine Watson", "Amanda Beelitz", "Justin Williams",
-
-    #LMCC Members
-    "Greg Yuskaitis", "Lynn Scott", "Steve Chase", "Debbie Hookway", "Randall Curry", "Kathy Romine", "Dean Reinauer",
-
-
-    "Brian Metsinger", "Noel Turner", "Ryan Matts", "Jeff Jordan", "Shannon Mahoney", "Dave Schreck", "Elvis Jean", "Mark Scott", "Scott Heckenberer", "Lisa Heckenberer", "Greg Yuskaitis", "Debra Halick", "Cyd Linquito"
-    # Keywords
-    "LMCC", "Lake Mohawk Country Club", "Lake Mohawk"
-    # "The Boardwalk Club", "BWC", "Hopatcong", "Sparta", "East Shore Trail", "North Shore Trail", 
-    # "Log Cabin Terrace", "Springbrook Trail", "Manitou", "Manitou Bridge", "Manitou Island", "Papoose"
-    ]
-
-# print("Configuring transcriber...")
-transcriber = aai.Transcriber()
-config = aai.TranscriptionConfig(
-    word_boost = boostedWords,
-    speaker_labels=True, 
+def identify_sections(audio_path, api_key, boosted_words):
+    aai.settings.api_key = api_key
+    transcriber = aai.Transcriber()
     
-    speakers_expected = 10)
+    base_config = aai.TranscriptionConfig(
+        word_boost=boosted_words,
+        speaker_labels=True,
+        speakers_expected=10,
+        auto_chapters=True
+    )
+    
+    transcript = transcriber.transcribe(audio_path, config=base_config)
+    
+    response = {
+        'audio_url': audio_path,
+        'utterances': [
+            {
+                'text': u.text,
+                'start': u.start,
+                'end': u.end,
+                'confidence': u.confidence,
+                'speaker': u.speaker,
+                'speakerName': None
+            }
+            for u in transcript.utterances
+        ],
+        'sections': {}
+    }
+    
+    # Identify sections by start time only
+    for utterance in transcript.utterances:
+        text = utterance.text.lower()
+        for group_name, group_info in SECTION_GROUPS.items():
+            if any(marker.lower() in text for marker in group_info['markers']):
+                response['sections'][group_name] = {
+                    'start': utterance.start,
+                    'name': group_name
+                }
+    
+    return response
 
-# p = "https://assembly.ai/wildfires.mp3"
-# transcript = transcriber.transcribe(p, config)
+def transcribe_section(audio_path, api_key, boosted_words, section_name, start_time, end_time):
+    aai.settings.api_key = api_key
+    transcriber = aai.Transcriber()
+    
+    section_config = aai.TranscriptionConfig(
+        word_boost=boosted_words,
+        speaker_labels=True,
+        speakers_expected=SECTION_GROUPS[section_name]['speakers_expected'],
+        audio_start_from=start_time,
+        audio_end_at=end_time
+    )
+    
+    transcript = transcriber.transcribe(audio_path, config=section_config)
+    return transcript.json_response
 
-# print("Transcribing file. This may take a few minutes...")
-transcript = transcriber.transcribe(audioPath, config)
+if __name__ == "__main__":
+    command = sys.argv[1]
+    api_key = sys.argv[2]
+    audio_path = sys.argv[3]
+    boosted_words = sys.argv[4].split(",")
+    if command == "identify":
+        result = identify_sections(audio_path, api_key, boosted_words)
+        sys.stdout.write(json.dumps(result, indent=3))
 
-
-
-
-# j = transcript.json_response
-# print(j)
-
-## Step 2
-with open(os.path.join(rootPath,'original.json'), "w") as file1:
-    json.dump(transcript.json_response, file1, indent=4)
-
-# print("Original JSON file created")
-# print("Formatting updated JSON file...")
-# t = transcript.json_response
-# t['text'] = ""
-# t['words'] = []
-# t['sections'] = [{
-#     'text': '',
-#     'start': 0
-# }]
-
-# i = 0
-# while i < len(t['utterances']):
-#     t['utterances'][i]['words'] = []
-#     t['utterances'][i]['speakerName'] = ''
-#     i += 1
-
-# with open(os.path.join(rootPath,'updatedData.json'), "w") as file1:
-#     json.dump(t, file1, indent=4)
-
-# print(json.dumps(j))
+    elif command == "transcribe":
+        section_name = sys.argv[5]
+        start_time = int(sys.argv[6])
+        end_time = int(sys.argv[7])
+        result = transcribe_section(audio_path, api_key, boosted_words, section_name, start_time, end_time)
+        print(json.dumps(result))

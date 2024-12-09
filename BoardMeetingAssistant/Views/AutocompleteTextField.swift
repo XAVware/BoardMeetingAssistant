@@ -54,28 +54,3 @@ struct AutocompleteTextField: View {
 //#Preview {
 //    AutocompleteTextField(text: .constant(""), suggestions: ["Victoria Germano", "Stu Conklin"])
 //}
-
-//import Combine
-//import SwiftUI
-//
-//struct KeyEventHandling: ViewModifier {
-//    @Binding var text: String
-//    var commit: () -> Void
-//    
-//    func body(content: Content) -> some View {
-//        content
-//            .onAppear()
-//            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("NSKeyDownNotification"))) { notification in
-//                if let event = notification.userInfo?["NSEvent"] as? NSEvent {
-//                    handleKeyEvent(event)
-//                }
-//            }
-//    }
-//    
-//    private func handleKeyEvent(_ event: NSEvent) {
-//        if event.keyCode == 36 { // keyCode for Enter key is 36
-//            print("Enter key tapped")
-//            commit()
-//        }
-//    }
-//}

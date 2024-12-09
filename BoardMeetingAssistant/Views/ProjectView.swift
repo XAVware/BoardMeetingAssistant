@@ -53,44 +53,14 @@ struct ProjectView: View {
         }
     }
     
-    /// Debounce typing, to delay saving after the user finishes typing
+    /// Debounce typing, to delay saving after the user finishes typing. Save after 1 second of no typing.
     private func handleTypingFinished() {
         typingDelayTask?.cancel()
-        
-        // Set a new task to save after 1 second of no typing
         typingDelayTask = DispatchWorkItem {
             saveUpdatedData()
         }
         
-        // Execute the new save task after 1 second of delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: typingDelayTask!)
-    }
-    
-    func exportProjectToJSON() {
-        guard let project = project else {
-            print("Project is nil")
-            return
-        }
-        // Convert Project to its exportable form
-        let projectExport = project.toExportModel()
-        
-        // Create a JSON encoder
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        
-        do {
-            // Encode the project as JSON
-            let jsonData = try encoder.encode(projectExport)
-            
-            // Save it to the same directory as the python scripts.
-            let documentsPath = "\(Documents_Path)\(project.name)/updated.json"
-            let fileURL = URL(fileURLWithPath: documentsPath)
-            try jsonData.write(to: fileURL)
-            
-            print("Exported JSON to: \(fileURL.path)")
-        } catch {
-            print("Error exporting project to JSON: \(error)")
-        }
     }
     
     func createDoc() {
@@ -269,17 +239,8 @@ struct ProjectView: View {
         .onAppear(perform: loadTranscriptionData)
         .toolbar {
             ToolbarItem(placement: .automatic) {
-                Button("To DocX") {
-                    createDoc()
-                    
-                }
+                Button("To DocX", action: createDoc)
             }
-            
-//            ToolbarItem(placement: .automatic) {
-//                Button("Export") {
-//                    exportProjectToJSON()
-//                }
-//            }
         }
     } //: Body
     
@@ -297,12 +258,12 @@ extension TimeInterval {
     }
 }
 
-#Preview {
-    ModelContainerPreview(ModelContainer.sample) {
-        ProjectView(project: .p)
-            .environment(NavigationContext())
-    }
-}
+//#Preview {
+//    ModelContainerPreview(ModelContainer.sample) {
+//        ProjectView(project: .p)
+//            .environment(NavigationContext())
+//    }
+//}
 
 func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
     Binding(

@@ -7,12 +7,14 @@
 
 import SwiftUI
 import SwiftData
-import Foundation
-import UniformTypeIdentifiers
 
 @main
 struct BoardMeetingAssistantApp: App {
-
+    
+    init() {
+        FileManager.copyScriptToDocuments()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

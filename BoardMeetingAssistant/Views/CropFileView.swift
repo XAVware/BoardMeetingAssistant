@@ -119,15 +119,14 @@ struct CropFileView: View {
     
     private func generateWaveformSamples(url: URL) {
         isProcessing = true
-        
-        // Process waveform in background
+
         DispatchQueue.global(qos: .userInitiated).async {
             do {
                 let audioFile = try AVAudioFile(forReading: url)
                 let format = audioFile.processingFormat
                 let frameCount = UInt32(audioFile.length)
                 
-                // Process in chunks to improve performance
+                // Chunk
                 let chunkSize = 1024 * 32
                 var samples: [Float] = []
                 let targetSampleCount = 200 // Number of waveform bars to display
@@ -142,7 +141,7 @@ struct CropFileView: View {
                     }
                 }
                 
-                // Downsample to target number of points
+                // Downsample
                 let samplesPerSegment = max(samples.count / targetSampleCount, 1)
                 var processedSamples: [Float] = []
                 
@@ -163,7 +162,7 @@ struct CropFileView: View {
                     self.isProcessing = false
                 }
             } catch {
-                print("Error generating waveform: \(error)")
+                print("[Error] Error generating waveform: \(error)")
                 DispatchQueue.main.async {
                     self.isProcessing = false
                 }

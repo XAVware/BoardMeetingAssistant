@@ -12,7 +12,6 @@ struct ProjectListView: View {
     var projects: [Project]
     @Environment(NavigationContext.self) var navigationContext
     @Environment(\.modelContext) private var modelContext
-//    @Query private var projects: [Project]
     
     var body: some View {
         @Bindable var navigationContext = navigationContext
@@ -41,6 +40,7 @@ struct ProjectListView: View {
             .buttonStyle(BorderedProminentButtonStyle())
         } //: VStack
         .padding()
+
     } //: Body
     
     private func deleteProjects(offsets: IndexSet) {

@@ -8,6 +8,7 @@ from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
 json_data = sys.argv[1]
 month = sys.argv[2]
+path = sys.argv[3]
 
 data = json.loads(json_data)
 # print(data)
@@ -42,10 +43,10 @@ for utterance in data['transcript'].get("utterances", []):
     # Add the text spoken by the speaker
     text_run = paragraph.add_run(text)
 
-output_path = os.path.join(fr"/Users/ryan/Library/Containers/com.xavware.BoardMeetingAssistant/Data/Documents/{month}", 'Draft.docx')
+output_path = os.path.join(fr"{path}/{month}", 'Draft.docx')
 doc.save(output_path)
 
 print("Saved. Opening...")
 
 path = f'open -a "/Applications/Microsoft Word.app" {output_path}'
-os.system(path)
+os.system(path) 
