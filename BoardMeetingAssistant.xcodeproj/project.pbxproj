@@ -20,6 +20,14 @@
 		949773402D06777700646A87 /* Export_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9497733F2D06777200646A87 /* Export_Ext.swift */; };
 		949773442D067FBA00646A87 /* createDocument.py in Resources */ = {isa = PBXBuildFile; fileRef = 949773422D067FBA00646A87 /* createDocument.py */; };
 		949773452D067FBA00646A87 /* transcribe.py in Resources */ = {isa = PBXBuildFile; fileRef = 949773432D067FBA00646A87 /* transcribe.py */; };
+		949773822D07FAD100646A87 /* OpenAI_Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9497737F2D07FAD100646A87 /* OpenAI_Responses.swift */; };
+		949773832D07FAD100646A87 /* OpenAI_Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9497737E2D07FAD100646A87 /* OpenAI_Params.swift */; };
+		949773842D07FAD100646A87 /* TranscribeAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949773812D07FAD100646A87 /* TranscribeAudioView.swift */; };
+		949773852D07FAD100646A87 /* OpenAI_Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9497737C2D07FAD100646A87 /* OpenAI_Enums.swift */; };
+		949773862D07FAD100646A87 /* OpenAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9497737A2D07FAD100646A87 /* OpenAI.swift */; };
+		949773872D07FAD100646A87 /* OpenAI_Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9497737B2D07FAD100646A87 /* OpenAI_Config.swift */; };
+		949773882D07FAD100646A87 /* OpenAI_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9497737D2D07FAD100646A87 /* OpenAI_Extensions.swift */; };
+		9497738A2D07FB3500646A87 /* ReadMe.md in Resources */ = {isa = PBXBuildFile; fileRef = 949773892D07FB2D00646A87 /* ReadMe.md */; };
 		949BE13F2C8D7526004E237A /* BoardMeetingAssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949BE13E2C8D7526004E237A /* BoardMeetingAssistantApp.swift */; };
 		949BE1412C8D7526004E237A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949BE1402C8D7526004E237A /* ContentView.swift */; };
 		949BE1432C8D7526004E237A /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949BE1422C8D7526004E237A /* DataModels.swift */; };
@@ -46,6 +54,14 @@
 		9497733F2D06777200646A87 /* Export_Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Export_Ext.swift; sourceTree = "<group>"; };
 		949773422D067FBA00646A87 /* createDocument.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = createDocument.py; sourceTree = "<group>"; };
 		949773432D067FBA00646A87 /* transcribe.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = transcribe.py; sourceTree = "<group>"; };
+		9497737A2D07FAD100646A87 /* OpenAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAI.swift; sourceTree = "<group>"; };
+		9497737B2D07FAD100646A87 /* OpenAI_Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAI_Config.swift; sourceTree = "<group>"; };
+		9497737C2D07FAD100646A87 /* OpenAI_Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAI_Enums.swift; sourceTree = "<group>"; };
+		9497737D2D07FAD100646A87 /* OpenAI_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAI_Extensions.swift; sourceTree = "<group>"; };
+		9497737E2D07FAD100646A87 /* OpenAI_Params.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAI_Params.swift; sourceTree = "<group>"; };
+		9497737F2D07FAD100646A87 /* OpenAI_Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAI_Responses.swift; sourceTree = "<group>"; };
+		949773812D07FAD100646A87 /* TranscribeAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscribeAudioView.swift; sourceTree = "<group>"; };
+		949773892D07FB2D00646A87 /* ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 		949BE13B2C8D7526004E237A /* BoardMeetingAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardMeetingAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		949BE13E2C8D7526004E237A /* BoardMeetingAssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardMeetingAssistantApp.swift; sourceTree = "<group>"; };
 		949BE1402C8D7526004E237A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,9 +115,25 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
+		949773792D07FA9500646A87 /* OpenAI_Interface-[Archive] */ = {
+			isa = PBXGroup;
+			children = (
+				949773892D07FB2D00646A87 /* ReadMe.md */,
+				9497737A2D07FAD100646A87 /* OpenAI.swift */,
+				9497737B2D07FAD100646A87 /* OpenAI_Config.swift */,
+				9497737C2D07FAD100646A87 /* OpenAI_Enums.swift */,
+				9497737D2D07FAD100646A87 /* OpenAI_Extensions.swift */,
+				9497737E2D07FAD100646A87 /* OpenAI_Params.swift */,
+				9497737F2D07FAD100646A87 /* OpenAI_Responses.swift */,
+				949773812D07FAD100646A87 /* TranscribeAudioView.swift */,
+			);
+			path = "OpenAI_Interface-[Archive]";
+			sourceTree = "<group>";
+		};
 		949BE1322C8D7526004E237A = {
 			isa = PBXGroup;
 			children = (
+				949773792D07FA9500646A87 /* OpenAI_Interface-[Archive] */,
 				943EC55C2D02BF4800CA53FD /* .gitignore */,
 				949773422D067FBA00646A87 /* createDocument.py */,
 				949773432D067FBA00646A87 /* transcribe.py */,
@@ -240,6 +272,7 @@
 			files = (
 				949773442D067FBA00646A87 /* createDocument.py in Resources */,
 				949773452D067FBA00646A87 /* transcribe.py in Resources */,
+				9497738A2D07FB3500646A87 /* ReadMe.md in Resources */,
 				949BE1492C8D7527004E237A /* Preview Assets.xcassets in Resources */,
 				943EC55D2D02BF4800CA53FD /* .gitignore in Resources */,
 				949BE1452C8D7527004E237A /* Assets.xcassets in Resources */,
@@ -258,6 +291,13 @@
 				9454B36F2D02D08B0001B718 /* priv.swift in Sources */,
 				949BE1412C8D7526004E237A /* ContentView.swift in Sources */,
 				94D1AD502CAD233C00CEC955 /* OutlinedFieldMod.swift in Sources */,
+				949773822D07FAD100646A87 /* OpenAI_Responses.swift in Sources */,
+				949773832D07FAD100646A87 /* OpenAI_Params.swift in Sources */,
+				949773842D07FAD100646A87 /* TranscribeAudioView.swift in Sources */,
+				949773852D07FAD100646A87 /* OpenAI_Enums.swift in Sources */,
+				949773862D07FAD100646A87 /* OpenAI.swift in Sources */,
+				949773872D07FAD100646A87 /* OpenAI_Config.swift in Sources */,
+				949773882D07FAD100646A87 /* OpenAI_Extensions.swift in Sources */,
 				94828C052CB1EDBC00E5E5A0 /* Preview+ModelContainer.swift in Sources */,
 				94828C062CB1EDBC00E5E5A0 /* ModelContainerPreview.swift in Sources */,
 				94CDCF322C8D8127007887E7 /* AssemblyAI_Response.swift in Sources */,

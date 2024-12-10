@@ -82,7 +82,7 @@ struct ProjectView: View {
             let scriptPath = documentsPath + "/createDocument.py"
             let process = Process()
             process.executableURL = URL(fileURLWithPath: pythonInterpreter)
-            process.arguments = [scriptPath, jsonString, project.name]
+            process.arguments = [scriptPath, jsonString, project.name, "/Users/ryan/Library/Containers/com.xavware.BoardMeetingAssistant/Data/Documents"]
             try process.run()
             process.waitUntilExit()
         } catch {
